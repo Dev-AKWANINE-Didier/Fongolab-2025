@@ -12,9 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
+            $table->id(); // identifiant
+            $table->foreignId('user_id')
+                  ->constrained('users','id')
+                  ->onDelete("cascade");
+            $table->string('name',100);
+            $table->string('slug',100)->unique();
+            $table->boolean("status")->default(true);
+            $table->text('description')->nullable();
+            $table->timestamps(); // created_at et updated_at
         });
     }
 

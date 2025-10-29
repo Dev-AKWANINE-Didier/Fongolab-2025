@@ -3,10 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+
+use App\Models\Category;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -18,10 +20,12 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+    protected $table = "users";
     protected $fillable = [
         'id',
         'name',
         'email',
+        'password',
         'role',
         'profile',
         'created_at',
@@ -52,9 +56,10 @@ class User extends Authenticatable
     }
 
 
-    // relation entre User et Category ( 1 à N)
+    
+    // la relation entre User et Category (1 à N)
     public function categories():HasMany{
-        return $this->hasMany(Category::class,'user_id','id');
+        return $this->hasMany(Category::class);
     }
 
 }

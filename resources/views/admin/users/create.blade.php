@@ -1,4 +1,5 @@
 @extends("admin.base")
+@section('title','Creation')
 @section('content') 
 <!-- CSS Animations -->
 <style>
@@ -39,12 +40,12 @@
       <section class="w-full article max-w-md bg-transparent rounded-xl shadow-lg p-6 sm:p-8 border-[#0c0c0d05] border animate-fade-in ">
           <!-- En-tête -->
           <header class="text-center mb-6">
-            <h1 class="text-3xl font-bold bg-gradient-to-r from-[#4c11bb] via-[#4c11bb] to-[#9A88F9] bg-clip-text">Ajouter un administrateur </h1>
+            <h1 class="text-3xl font-bold bg-gradient-to-r from-[#4c11bb] via-[#4c11bb] to-[#9A88F9] bg-clip-text">Ajouter un utilisateur </h1>
           </header>
 
           <!-- Formulaire -->
-          <form action="{{ route('admin-store-admin') }}" method="POST" class="space-y-6 text-black">
-             @csrf
+          <form action="{{ route('dashboard-user-store') }}" method="POST" class="space-y-6 text-black">
+           @csrf
 
             <!-- Nom -->
             <div>
@@ -53,9 +54,9 @@
               value="{{ old('name') }}"
                      placeholder="Nom de l'utilisateur"
                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c11bb] focus:outline-none focus:border-transparent transition duration-300">
-              @error("name")
-                <p class="text-red-500">{{ $message }}</p>
-              @enderror
+             @error('name')
+               <p class="text-red-500">{{ $message }}</p>
+             @enderror
             </div>
                {{-- email  --}}
             <div>
@@ -64,9 +65,9 @@
                       value="{{ old('email') }}"
                      placeholder="Email"
                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c11bb] focus:outline-none focus:border-transparent transition duration-300">
-              @error("email")
-                <p class="text-red-500">{{ $message }}</p>
-              @enderror   
+            @error('email')
+               <p class="text-red-500">{{ $message }}</p>
+             @enderror
             </div>
 
             <!-- Bouton -->

@@ -27,6 +27,8 @@ class Category extends Model
     public function user():BelongsTo{
         return $this->belongsTo(User::class);
     }
+
+    
     // relation entre Category et Product 
     public function products():HasMany{
         return $this->hasMany(Product::class);

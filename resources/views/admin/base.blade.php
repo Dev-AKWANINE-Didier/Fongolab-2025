@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title></title>
+  <title>@yield("title")</title>
 
 
 
@@ -156,7 +156,7 @@
         </button>
         <ul class="mt-1 ml-4 hidden space-y-1 text-blue-800">
           <li><a class="inline-flex items-center text-sm text-blue-600  hover:text-blue-800 transition" href="" class="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 transition">Admins</a></li>
-          <li><a class="inline-flex items-center text-sm text-blue-600  hover:text-blue-800 transition" href="" class="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 transition">Users</a></li>
+          <li><a class="inline-flex items-center text-sm text-blue-600  hover:text-blue-800 transition" href="{{ route('dashboard-user-index') }}" class="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 transition">Users</a></li>
         </ul>
       </li>
 

@@ -9,6 +9,7 @@
 </style>
 
 @extends("admin.base")
+@section("title",'dashboard')
 @section('content')  
 <section class="py-10">
   <div class="max-w-6xl mx-auto px-4">

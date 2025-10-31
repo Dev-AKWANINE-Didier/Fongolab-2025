@@ -1,4 +1,5 @@
 @extends('admin.base')
+@section('title','Liste')
 @section('content')
 <section class="py-10 bg-transparent min-h-screen">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> 
@@ -11,12 +12,12 @@
         </section>
         <div class="lg:mb-8 mb-3 w-full">
               <h1 class="text-3xl font-bold bg-gradient-to-r from-[#5406e6] via-[#4c11bb ] to-[#320fdc] bg-clip-text text-transparent md:mb-4  text-center underline-offset-4">
-                Les administrateurs
+                Les utilisateurs
               </h1>
         </div>
         <section class="flex h-[2rem] gap-4 justify-center mb-4 md:mb-4">
             <!-- Bouton Ajouter -->
-              <a href=""
+              <a href="{{ route('dashboard-user-create') }}"
                  class="inline-flex items-center gap-2 bg-gradient-to-r from-[#5406e6] via-[#4c11bb ] to-[#320fdc]  text-white text-sm  hover:opacity-[0.9] font-medium py-2 px-4 rounded-lg shadow transition-opacity">
                 <!-- Icône + -->
                 <i class="fa-solid fa-plus"></i>
@@ -37,12 +38,12 @@
           </tr>
         </thead>
         <tbody class="divide-y divide-[#ffffff36]">
-          @foreach ($admins as $admin )
+          @foreach ($users as $user )
           <tr class="hover:bg-[#12141a35] transition">
-            <td class="px-4 py-3 text-center border">{{ $loop->iteration}}</td>
-            <td class="px-4 py-3 text-left border font-mono ">{{ $admin->name }}</td>
-            <td class="px-4 py-3 text-left border">{{ $admin->email }}</td>
-            <td class="px-4 py-3 text-left border">{{ $admin->role }}</td>
+            <td class="px-4 py-3 text-center border">{{ $loop->iteration }}</td>
+            <td class="px-4 py-3 text-left border font-mono ">{{ $user->name }}</td>
+            <td class="px-4 py-3 text-left border">{{ $user->email }}</td>
+            <td class="px-4 py-3 text-left border">{{ $user->role }}</td>
             <td class="px-4 py-3 text-center border">
               <div class="flex items-center justify-center space-x-2">
                     <!-- Voir -->
@@ -64,31 +65,6 @@
             </td>
           </tr>
           @endforeach
-          <tr class="hover:bg-[#12141a35] transition">
-            <td class="px-4 py-3 text-center border">2</td>
-            <td class="px-4 py-3 text-left border font-mono ">John Doe</td>
-            <td class="px-4 py-3 text-left border">jonhdoe@gmail.com</td>
-            <td class="px-4 py-3 text-left border">user</td>
-            <td class="px-4 py-3 text-center border">
-              <div class="flex items-center justify-center space-x-2">
-                    <!-- Voir -->
-                    <a href="" class="text-blue-600 hover:text-blue-800" title="Voir">
-                      <i class="bi bi-eye"></i>
-                    </a>
-                    <!-- Éditer -->
-                    <a href="" class="text-yellow-500 hover:text-yellow-600" title="Éditer">
-                      <i class="fa-solid fa-pen"></i>
-                    </a>
-                    <!-- Supprimer -->
-                    <form action="" method="" onsubmit="return confirm('Supprimer cet étudiant ?');">
-                      
-                      <button type="submit" class="cursor-pointer text-red-600 hover:text-red-700" title="Supprimer">
-                        <i class="bi bi-trash"></i>
-                      </button>
-                    </form>
-                  </div>
-            </td>
-          </tr>
         </tbody>
       </table>
     </div>

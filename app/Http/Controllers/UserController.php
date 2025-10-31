@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -12,18 +13,23 @@ class UserController extends Controller
      */
     public function index()
     {
+       
         $users = User::all();
         
-   
-        return view('admin.users.index_admin',['users'=>$users]);
+
+        return view('admin.users.index',['users'=>$users]);
+        
         //
     }
+
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
+        return view('admin.users.create');
         //
     }
 
@@ -32,6 +38,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=>['required','max:100','string'],
+            'email'=>['required','email','unique:users,email','max:100']
+        ],[
+            'name.required'=>'Veuillez founir le nom ',
+            'email.required'=>"Veuillez founir l'email ",
+            'email.email'=>"Votre email est invalid",
+        ]);
+
+        User::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>Hash::make("user12345678"),
+            'role'=>'user',
+        ]);
+        return redirect()->route('dashboard-user-index');
         //
     }
 

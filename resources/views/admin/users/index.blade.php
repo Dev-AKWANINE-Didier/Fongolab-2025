@@ -1,6 +1,7 @@
 @extends('admin.base')
 @section('title','Liste')
 @section('content')
+
 <section class="py-10 bg-transparent min-h-screen">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> 
     <div class="flex lg:flex-row flex-col lg:justify-between">
@@ -17,7 +18,7 @@
         </div>
         <section class="flex h-[2rem] gap-4 justify-center mb-4 md:mb-4">
             <!-- Bouton Ajouter -->
-              <a href="{{ route('dashboard-user-create') }}"
+              <a href="{{ route("dashboard-user-create") }}"
                  class="inline-flex items-center gap-2 bg-gradient-to-r from-[#5406e6] via-[#4c11bb ] to-[#320fdc]  text-white text-sm  hover:opacity-[0.9] font-medium py-2 px-4 rounded-lg shadow transition-opacity">
                 <!-- Icône + -->
                 <i class="fa-solid fa-plus"></i>
@@ -51,7 +52,7 @@
                       <i class="bi bi-eye"></i>
                     </a>
                     <!-- Éditer -->
-                    <a href="" class="text-yellow-500 hover:text-yellow-600" title="Éditer">
+                    <a href="{{ route('dashboard-user-edit',$user->id) }}" class="text-yellow-500 hover:text-yellow-600" title="Éditer">
                       <i class="fa-solid fa-pen"></i>
                     </a>
                     <!-- Supprimer -->

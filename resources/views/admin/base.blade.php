@@ -175,7 +175,6 @@
 
   <!-- Main -->
   <main class="pt-10 md:pt-10 md:ml-64 px-4 min-h-[calc(100vh-4rem)] mt-[3rem] sm:mt-[3rem] md:mt-[1rem]">
-    
     @yield("content")
   </main>
   <!-- JS -->

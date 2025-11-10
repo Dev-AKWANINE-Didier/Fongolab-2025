@@ -112,7 +112,7 @@
         </button>
         <ul class="mt-1 ml-4 hidden space-y-1 text-blue-800">
           <li><a href="" class="inline-flex items-center text-sm text-blue-600  hover:text-blue-800 transition">Home</a></li>
-          <li><a href="" class="inline-flex items-center text-sm text-blue-600  hover:text-blue-800 transition">Dashboard</a></li>
+          <li><a href="{{ route('dashboard') }}" class="inline-flex items-center text-sm text-blue-600  hover:text-blue-800 transition">Dashboard</a></li>
         </ul>
       </li>
 
@@ -122,8 +122,8 @@
           <i class="bi bi-chevron-down chevron"></i>
         </button>
         <ul class="mt-1 ml-4 hidden space-y-1 text-blue-800">
-          <li><a href="" class="inline-flex items-center text-sm text-blue-600  hover:text-blue-800 transition">Lister</a></li>
-          <li><a href="" class="inline-flex items-center text-sm text-blue-600  hover:text-blue-800 transition">Créer</a></li>
+          <li><a href="{{ route('dashboard-category-index') }}" class="inline-flex items-center text-sm text-blue-600  hover:text-blue-800 transition">Lister</a></li>
+          <li><a href="{{ route('dashboard-category-create') }}" class="inline-flex items-center text-sm text-blue-600  hover:text-blue-800 transition">Créer</a></li>
         </ul>
       </li>
 

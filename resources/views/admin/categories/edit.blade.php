@@ -40,35 +40,47 @@
       <section class="w-full article max-w-md bg-transparent rounded-xl shadow-lg p-6 sm:p-8 border-[#0c0c0d05] border animate-fade-in ">
           <!-- En-tête -->
           <header class="text-center mb-6">
-            <h1 class="text-3xl font-bold bg-gradient-to-r from-[#4c11bb] via-[#4c11bb] to-[#9A88F9] bg-clip-text">Modifier l'utilisateur</h1>
+            <h1 class="text-3xl font-bold bg-gradient-to-r from-[#4c11bb] via-[#4c11bb] to-[#9A88F9] bg-clip-text">Modifier la categorie {{ $category->name }}</h1>
           </header>
 
           <!-- Formulaire -->
-          <form action="{{ route('dashboard-user-update',$user->id) }}" method="POST" class="space-y-6 text-black">
+          <form action="{{ route('dashboard-category-update',$category->id) }}" method="POST" class="space-y-6 text-black">
            @csrf
            @method("PUT")
             <!-- Nom -->
             <div>
               <label for="name" class="block text-sm font-medium ">Nom </label>
               <input type="text" name="name" id="name"
-              value="{{ $user->name }}"
-                     placeholder="Nom de l'utilisateur"
+              value="{{ $category->name }}"
+                     placeholder="Nom de la categories"
                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c11bb] focus:outline-none focus:border-transparent transition duration-300">
              @error("name")
                <p class="text-red-500">{{ $message }}</p>
              @enderror
             </div>
-               {{-- email  --}}
+            {{-- user --}}
             <div>
-              <label for="email" class="block text-sm font-medium ">Email</label>
-              <input type="text" name="email" id="email"
-                      value="{{ $user->email }}"
-                     placeholder="Email"
-                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c11bb] focus:outline-none focus:border-transparent transition duration-300">
-            @error('email')
+              <label for="user" class="block text-sm font-medium ">Utilisateur</label>
+              <select name="user" id="user" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c11bb] focus:outline-none focus:border-transparent transition duration-300">
+                <option value="">Choisir</option>
+                @foreach ($users as $user )
+                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                @endforeach
+              </select>
+            @error('user')
                <p class="text-red-500">{{ $message }}</p>
              @enderror
             </div>
+
+            {{-- description --}}
+               <div>
+                 <label for="description" class="block text-sm font-medium ">Description</label>
+                 <textarea name="description" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c11bb] focus:outline-none focus:border-transparent transition duration-300" id="">{{ $category->description }}</textarea>
+               @error('description')
+                  <p class="text-red-500">{{ $message }}</p>
+                @enderror
+            </div>
+
 
             <!-- Bouton -->
             <div>
@@ -88,6 +100,4 @@
   
 </main>
 @endsection
-
-
 

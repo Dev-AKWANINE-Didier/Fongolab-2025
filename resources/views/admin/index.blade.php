@@ -9,7 +9,7 @@
 </style>
 
 @extends("admin.base")
-@section("title",'dashboard')
+@section("title",'Dashboard')
 @section('content')  
 <section class="py-10">
   <div class="max-w-6xl mx-auto px-4">
@@ -21,8 +21,8 @@
       <div class="bg-[#e0e4ebeb] article article-1 border-1 border-[#ffffff36] shadow rounded-xl p-6 border-l-4 border-l-blue-600">
         <h2 class="text-xl font-semibold text-blue-700 mb-2"><i class="fa-solid fa-list mr-2"></i>Catégories</h2>
         <p class="text-gray-600 text-sm">Les informations sur les catégories</p>
-        <a href="" class="text-sm text-blue-600 hover:underline mt-2 inline-block">Lister les catégories</a> <br>
-        <a href="" class="text-sm text-blue-600 hover:underline mt-2 inline-block">Créer une catégorie</a>
+        <a href="{{ route('dashboard-category-index') }}" class="text-sm text-blue-600 hover:underline mt-2 inline-block">Lister les catégories</a> <br>
+        <a href="{{ route('dashboard-category-create') }}" class="text-sm text-blue-600 hover:underline mt-2 inline-block">Créer une catégorie</a>
       </div>
 
       <!-- Carte Produits -->
@@ -46,7 +46,7 @@
         <h2 class="text-xl font-semibold text-purple-700 mb-2"><i class="fa-solid fa-users mr-2"></i> Utilisateurs</h2>
         <p class="text-gray-600 text-sm">Consultez les utilisateurs</p>
             <a href="" class="text-sm text-purple-600 hover:underline mt-2 inline-block">Les administrateurs</a> <br>
-            <a href="" class="text-sm text-purple-600 hover:underline mt-2 inline-block">Les utilisateurs</a>
+            <a href="{{ route('dashboard-user-index') }}" class="text-sm text-purple-600 hover:underline mt-2 inline-block">Les utilisateurs</a>
       </div>
     </div>
   </div>

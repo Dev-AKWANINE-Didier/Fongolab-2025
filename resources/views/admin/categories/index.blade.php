@@ -1,8 +1,7 @@
-@extends('admin.base')
-@section('title','Liste')
-@section('content')
-
-<section class="py-10 bg-transparent min-h-screen">
+@extends("admin.base")
+@section("title",'Liste de categories')
+@section("content")
+    <section class="py-10 bg-transparent min-h-screen">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> 
     <div class="flex lg:flex-row flex-col lg:justify-between">
         <section>
@@ -13,12 +12,12 @@
         </section>
         <div class="lg:mb-8 mb-3 w-full">
               <h1 class="text-3xl font-bold bg-gradient-to-r from-[#5406e6] via-[#4c11bb ] to-[#320fdc] bg-clip-text text-transparent md:mb-4  text-center underline-offset-4">
-                Les utilisateurs
+                Les categories
               </h1>
         </div>
         <section class="flex h-[2rem] gap-4 justify-center mb-4 md:mb-4">
             <!-- Bouton Ajouter -->
-              <a href="{{ route("dashboard-user-create") }}"
+              <a href="{{ route('dashboard-category-create') }}"
                  class="inline-flex items-center gap-2 bg-gradient-to-r from-[#5406e6] via-[#4c11bb ] to-[#320fdc]  text-white text-sm  hover:opacity-[0.9] font-medium py-2 px-4 rounded-lg shadow transition-opacity">
                 <!-- Icône + -->
                 <i class="fa-solid fa-plus"></i>
@@ -33,32 +32,37 @@
           <tr>
             <th class="px-4 py-3 text-center border">N°</th>
             <th class="px-4 py-3 text-center border">Nom</th>
-            <th class="px-4 py-3 text-left border">Email</th>
-            <th class="px-4 py-3 text-left border">Role</th>
-            <th class="px-4 py-3 text-left border">Id</th>
+            <th class="px-4 py-3 text-left border">Slug</th>
+            <th class="px-4 py-3 text-left border">User</th>
+            <th class="px-4 py-3 text-left border">Statut</th>
             <th class="px-4 py-3 text-center border">Actions</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-[#ffffff36]">
-          @foreach ($users as $user )
+          @foreach ($categories as $category )
           <tr class="hover:bg-[#12141a35] transition">
             <td class="px-4 py-3 text-center border">{{ $loop->iteration }}</td>
-            <td class="px-4 py-3 text-left border font-mono ">{{ $user->name }}</td>
-            <td class="px-4 py-3 text-left border">{{ $user->email }}</td>
-            <td class="px-4 py-3 text-left border">{{ $user->role }}</td>
-            <td class="px-4 py-3 text-left border">{{ $user->id }}</td>
+            <td class="px-4 py-3 text-left border font-mono ">{{ $category->name }}</td>
+            <td class="px-4 py-3 text-left border">{{ $category->slug }}</td>
+            <td class="px-4 py-3 text-left border">{{ $category->user->name }}</td>
+            <td class="px-4 py-3 text-left border">@if ($category->status == 1)
+              Disponible
+              @else
+              Indisponible
+            @endif
+          </td>
             <td class="px-4 py-3 text-center border">
               <div class="flex items-center justify-center space-x-2">
                     <!-- Voir -->
-                    <a href="{{ route('dashboard-user-show',$user->id) }}" class="text-blue-600 hover:text-blue-800" title="Voir">
+                    <a href="" class="text-blue-600 hover:text-blue-800" title="Voir">
                       <i class="bi bi-eye"></i>
                     </a>
                     <!-- Éditer -->
-                    <a href="{{ route('dashboard-user-edit',$user->id) }}" class="text-yellow-500 hover:text-yellow-600" title="Éditer">
+                    <a href="{{ route('dashboard-category-edit',$category->id) }}" class="text-yellow-500 hover:text-yellow-600" title="Éditer">
                       <i class="fa-solid fa-pen"></i>
                     </a>
                     <!-- Supprimer -->
-                    <form action="{{ route('dashboard-user-delete',$user->id) }}" method="POST">
+                    <form action="{{ route('dashboard-category-delete',$category->id) }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="cursor-pointer text-red-600 hover:text-red-700" title="Supprimer">
@@ -75,28 +79,3 @@
   </div>
 </section>
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

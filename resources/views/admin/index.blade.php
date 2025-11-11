@@ -29,8 +29,8 @@
       <div class="bg-[#e0e4ebeb] article article-2 border-1 border-[#ffffff36] shadow rounded-xl p-6 border-l-4 border-l-green-600">
         <h2 class="text-xl font-semibold text-green-700 mb-2 "><i class="fa-solid fa-box mr-2"></i>Produits</h2>
         <p class="text-gray-600 text-sm">Les informations sur les produits</p>
-        <a href="" class="text-sm text-blue-600 hover:underline mt-2 inline-block">Lister les catégories</a> <br>
-        <a href="" class="text-sm text-blue-600 hover:underline mt-2 inline-block">Créer une catégorie</a>
+        <a href="{{ route('dashboard-products-index') }}" class="text-sm text-blue-600 hover:underline mt-2 inline-block">Lister les produits</a> <br>
+        <a href="" class="text-sm text-blue-600 hover:underline mt-2 inline-block">Créer un produit</a>
       </div>
 
       <!-- Carte Articles -->

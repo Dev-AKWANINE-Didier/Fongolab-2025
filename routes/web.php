@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
 
@@ -43,3 +43,12 @@ Route::post("dashboard/category/store/",[CategoryController::class, 'store'])->n
 Route::get("dashboard/category/edit/{category}",[CategoryController::class, 'edit'])->name("dashboard-category-edit");
 Route::put("dashboard/category/update/{category}",[CategoryController::class, 'update'])->name("dashboard-category-update");
 Route::delete("dashboard/category/delete/{category}",[CategoryController::class, 'destroy'])->name("dashboard-category-delete");
+
+
+// les routes pour les produits 
+Route::get("dashboard/products/index/",[ProductController::class,'index'])->name('dashboard-products-index');
+Route::get("dashboard/products/create/",[ProductController::class, 'create'])->name('dashboard-products-create');
+Route::post('dashboard/products/store/',[ProductController::class, 'store'])->name('dashboard-products-store');
+Route::get('dashboard/products/edit/{product}/',[ProductController::class,'edit'])->name('dashboard-products-edit');
+Route::put("dashboard/products/update/{product}/",[ProductController::class,'update'])->name('dashboard-products-update');
+Route::delete('dashboard/products/delete/{product}/',[ProductController::class,'destroy'])->name('dashboard-products-delete');

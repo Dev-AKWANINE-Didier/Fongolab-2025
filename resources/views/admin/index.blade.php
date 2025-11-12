@@ -37,7 +37,7 @@
       <div class="bg-[#e0e4ebeb] article article-4 border-1 border-[#ffffff36] shadow rounded-xl p-6 border-l-4 border-l-yellow-500">
         <h2 class="text-xl font-semibold text-yellow-600 mb-2"><i class="fa-solid fa-file-lines mr-2"></i>Articles</h2>
         <p class="text-gray-600 text-sm">Voir les informations sur les articles</p>
-        <a href="" class="text-sm text-blue-600 hover:underline mt-2 inline-block">Lister les catégories</a> <br>
+        <a href="{{ route('dashboard-articles-index') }}" class="text-sm text-blue-600 hover:underline mt-2 inline-block">Lister les articles</a> <br>
         <a href="" class="text-sm text-blue-600 hover:underline mt-2 inline-block">Créer une catégorie</a>
       </div>
 

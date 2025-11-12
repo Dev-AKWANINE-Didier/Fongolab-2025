@@ -13,6 +13,8 @@ class Article extends Model
         'id',
         'product_id',
         'name',
+        'slug',
+        'status',
         'price',
         'stock',
         'description',

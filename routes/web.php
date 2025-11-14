@@ -62,3 +62,4 @@ Route::post("dashboard/articles/store/",[ArticleController::class,'store'])->nam
 Route::get("dashboard/articles/edit/{article}",[ArticleController::class,'edit'])->name("dashboard-articles-edit");
 Route::put("dashboard/articles/update/{article}",[ArticleController::class,'update'])->name("dashboard-articles-update");
 Route::delete("dashboard/articles/delete/{article}",[ArticleController::class,'destroy'])->name("dashboard-articles-delete");
+Route::get("dashboard/articles/show/{article}/",[ArticleController::class, 'show'])->name("dashbaord-articles-show");

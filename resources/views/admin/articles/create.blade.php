@@ -44,7 +44,7 @@
           </header>
 
           <!-- Formulaire -->
-          <form action="{{route('dashboard-articles-store')}}" method="POST" class="space-y-6 text-black">
+          <form action="{{route('dashboard-articles-store')}}" method="POST" enctype="multipart/form-data" class="space-y-6 text-black">
            @csrf
             <!-- Nom -->
             <div>
@@ -77,6 +77,18 @@
                      placeholder="Quantité de l'article"
                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c11bb] focus:outline-none focus:border-transparent transition duration-300">
              @error("stock")
+               <p class="text-red-500">{{ $message }}</p>
+             @enderror
+            </div>
+
+                       <!-- image -->
+            <div>
+              <label for="image" class="block text-sm font-medium ">Image :  </label>
+              <input type="file" name="image" id="image"
+              value="{{ old('image') }}"
+                     placeholder="Prix de l'article"
+                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c11bb] focus:outline-none focus:border-transparent transition duration-300">
+             @error("image")
                <p class="text-red-500">{{ $message }}</p>
              @enderror
             </div>

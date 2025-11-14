@@ -40,14 +40,23 @@ class ArticleController extends Controller
             'name'=>['required',"string","min:2","max:100",'unique:articles,name'],
             'price'=>['required',"decimal:1,10"],
             'stock'=>['required',"integer"],
+            'image'=>['required','image','max:2048','min:1','mimes:jpeg,png,jpg'],
             'product'=>['required',"exists:products,id"],
             'description'=>[''],
         ]);
+        if($request->hasFile("image")){
+            $file = $request->file("image");
+            
+            // nommer 
+            $fileName = time(). "_".$file->getClientOriginalName();
+            $path = $file->storeAs("images",$fileName ,"public");
+        }
         Article::create([
             'name'=>$request->name,
             'price'=>$request->price, 
             'slug'=>Str::slug($request->name),
             'stock'=>$request->stock,
+            'image'=>$fileName,
             'product_id'=>$request->product,
             'description'=>$request->description
         ]);
@@ -61,6 +70,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
+        return view("admin.articles.show",['article'=>$article]);
         //
     }
 
@@ -83,13 +93,21 @@ class ArticleController extends Controller
             'name'=>['required',"string","min:2","max:100",Rule::unique("articles")->ignore($article->id)],
             'price'=>['required',"decimal:1,10"],
             'stock'=>['required',"integer"],
+            'image'=>['required','image','max:2048','min:1','mimes:jpeg,jpg,png'],
             'product'=>['required',"exists:products,id"],
             'description'=>[''],
         ]);
+        if($request->hasFile("image")){
+            $file = $request->file("image");
+            //  nommer avec timestamps 
+            $fileName = time(). "_".$file->getClientOriginalName();
+            $path = $file->storeAs("images",$fileName,"public");
+        }
         $article->name = $request->name;
         $article->price = $request->price;
         $article->slug = Str::slug($request->name);
         $article->product_id = $request->product;
+        $article->image = $fileName;
         $article->stock= $request->stock;
         $article->description = $request->description; 
 

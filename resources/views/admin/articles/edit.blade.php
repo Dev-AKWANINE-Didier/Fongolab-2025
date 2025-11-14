@@ -44,7 +44,7 @@
           </header>
 
           <!-- Formulaire -->
-          <form action="{{ route('dashboard-articles-update',$article->id) }}" method="POST" class="space-y-6 text-black">
+          <form action="{{ route('dashboard-articles-update',$article->id) }}" enctype="multipart/form-data" method="POST" class="space-y-6 text-black">
            @csrf
            @method("PUT")
             <!-- Nom -->
@@ -82,6 +82,17 @@
              @enderror
             </div>
 
+            <div>
+              <label for="image" class="block text-sm font-medium ">Image :  </label>
+              <input type="file" name="image" id="image"
+              value="{{ old('image') }}"
+                     placeholder="Prix de l'article"
+                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c11bb] focus:outline-none focus:border-transparent transition duration-300">
+             @error("image")
+               <p class="text-red-500">{{ $message }}</p>
+             @enderror
+            </div>
+
             {{-- product --}}
             <div>
               <label for="product" class="block text-sm font-medium ">Produit :</label>
@@ -95,6 +106,8 @@
                <p class="text-red-500">{{ $message }}</p>
              @enderror
             </div>
+
+
 
             {{-- description --}}
                <div>

@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -62,6 +63,19 @@ class User extends Authenticatable
     public function categories():HasMany{
         return $this->hasMany(Category::class);
     }
+
+   
+
+
+    public function phone():HasOne{
+        return $this->hasOne(Phone::class);
+    }
+    
+
+    public function roles():BelongsToMany{
+        return $this->belongsToMany(Role::class,'role_user','user_id','role_id');
+    }
+    
 
 
 

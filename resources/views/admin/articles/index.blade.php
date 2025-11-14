@@ -37,6 +37,7 @@
             <th class="px-4 py-3 text-left border">Quantité</th>
             <th class="px-4 py-3 text-left border">Produit</th>
             <th class="px-4 py-3 text-left border">Statut</th>
+            <th class="px-4 py-3 text-left border">Image</th>
             <th class="px-4 py-3 text-center border">Actions</th>
           </tr>
         </thead>
@@ -55,10 +56,13 @@
               Indisponible
             @endif
           </td>
+          <td class="px-4 py-3 text-left border">
+            <img class="w-[4rem] h-[4rem] rounded-full" src="{{ asset("storage/images/".$article->image) }}" alt="">
+          </td>
             <td class="px-4 py-3 text-center border">
               <div class="flex items-center justify-center space-x-2">
                     <!-- Voir -->
-                    <a href="" class="text-blue-600 hover:text-blue-800" title="Voir">
+                    <a href="{{ route("dashbaord-articles-show",$article->id) }}" class="text-blue-600 hover:text-blue-800" title="Voir">
                       <i class="bi bi-eye"></i>
                     </a>
                     <!-- Éditer -->

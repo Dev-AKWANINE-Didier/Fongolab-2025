@@ -8,20 +8,15 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     * 
      */
     public function up(): void
     {
-        Schema::create('flights', function (Blueprint $table) {
+        Schema::create('animals', function (Blueprint $table) {
             $table->id();
-
-            // les colonnes 
-            $table->string("name")->unique();
-            $table->foreignId("user_id");
-            $table->string("airline");
-            $table->enum('role',['user','admin']);
-            $table->boolean("status")->nullable();
-            $table->text('description');
+            $table->string("name");
+            $table->string("cry");
+            $table->integer("age");
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('flights');
+        Schema::dropIfExists('animals');
     }
 };

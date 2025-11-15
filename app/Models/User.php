@@ -22,7 +22,9 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $table = "users";
+    // le nom de la tabel que ce model doit utiliser
+    protected $table="users";
+    
     protected $fillable = [
         'id',
         'name',
@@ -32,7 +34,8 @@ class User extends Authenticatable
         'profile',
         'created_at',
         'updated_at'
-    ];
+    ]; // les propriete remplissage en masse 
+    protected $guarded = ['id','password']; // l'inverse de fillable
 
     /**
      * The attributes that should be hidden for serialization.

@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
@@ -63,3 +65,16 @@ Route::get("dashboard/articles/edit/{article}",[ArticleController::class,'edit']
 Route::put("dashboard/articles/update/{article}",[ArticleController::class,'update'])->name("dashboard-articles-update");
 Route::delete("dashboard/articles/delete/{article}",[ArticleController::class,'destroy'])->name("dashboard-articles-delete");
 Route::get("dashboard/articles/show/{article}/",[ArticleController::class, 'show'])->name("dashbaord-articles-show");
+
+// routes pour testController fait pour la recapitulation
+Route::get("test/",[TestController::class,'index']);
+
+
+// les routes pour Animals 
+Route::get("animals/index/",[AnimalController::class,'index'])->name("animals-index");
+Route::get("animals/create/",[AnimalController::class,'create'])->name("animals-create");
+Route::post("animals/store/",[AnimalController::class, 'store'])->name("animals-store");
+Route::get("animals/edit/{animal}",[AnimalController::class, 'edit'])->name("animals-edit");
+Route::put("animals/update/{animal}",[AnimalController::class, 'update'])->name("animals-update");
+Route::delete("animals/delete/{animal}",[AnimalController::class, 'destroy'])->name("animals-delete");
+Route::get("animals/show/{animal}",[AnimalController::class, 'show'])->name("animals-show");

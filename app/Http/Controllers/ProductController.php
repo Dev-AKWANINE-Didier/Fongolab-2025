@@ -15,6 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $categories = Category::where("user_id","=",auth()->user()->id)->get();
         $products = Product::all();
         return view('admin.products.index',['products'=>$products]);
         //

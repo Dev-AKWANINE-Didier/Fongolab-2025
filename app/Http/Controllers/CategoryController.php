@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy("id","ASC")->get();
+        $categories = Category::where("user_id","=",auth()->user()->id)->orderBy("id","ASC")->get();
         return view("admin.categories.index",["categories"=>$categories]);
         //
     }
@@ -37,14 +37,13 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name'=>['required','string','min:2','max:200','unique:categories,name'],
-            'user'=>['required','exists:users,id'],
             'description'=>[''],
         ]);
         //
         Category::create([
             'name'=>$request->name,
             'slug'=>Str::slug($request->name),
-            'user_id'=>$request->user,
+            'user_id'=>auth()->user()->id,
             'description'=>$request->description,
         ]);
         return redirect()->route('dashboard-category-index');
@@ -78,12 +77,11 @@ class CategoryController extends Controller
         //
         $request->validate([
             'name'=>['required','string','min:2','max:200',Rule::unique('categories')->ignore($category->id)],
-            'user'=>['required','exists:users,id'],
             'description'=>[''],
         ]);
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
-        $category->user_id = $request->user;
+        $category->user_id = auth()->user()->id;
         $category->description = $request->description;
 
         $category->save();

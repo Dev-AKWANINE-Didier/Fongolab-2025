@@ -13,7 +13,11 @@
 @section('content')  
 <section class="py-10">
   <div class="max-w-6xl mx-auto px-4">
-    <h1 class="text-3xl font-bold text-blue-600 mb-6 text-center">Bienvenue, Cher </h1>
+    <h1 class="text-3xl font-bold text-blue-600 mb-6 text-center">Bienvenue, Cher 
+      @if (auth()->check())
+        {{ auth()->user()->name }}
+      @endif
+    </h1>
     <p class="text-gray-600 text-lg mb-10 text-center">Voici un aperçu rapide de votre tableau de bord.</p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -12,13 +12,17 @@ use App\Http\Controllers\CategoryController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+
+
+
+
+
+
+Route::middleware("auth")->group(function(){
 Route::get("/",function(){
  return view('admin.index');
 })->name('dashboard');
-
-
-
-
 
 // les routes pour UserController 
 // lister les utilisateurs
@@ -77,4 +81,5 @@ Route::post("animals/store/",[AnimalController::class, 'store'])->name("animals-
 Route::get("animals/edit/{animal}",[AnimalController::class, 'edit'])->name("animals-edit");
 Route::put("animals/update/{animal}",[AnimalController::class, 'update'])->name("animals-update");
 Route::delete("animals/delete/{animal}",[AnimalController::class, 'destroy'])->name("animals-delete");
-Route::get("animals/show/{animal}",[AnimalController::class, 'show'])->name("animals-show");
+Route::get("animals/show/{animal}",[AnimalController::class, 'show'])->name("animals-show"); 
+});

@@ -58,19 +58,7 @@
                <p class="text-red-500">{{ $message }}</p>
              @enderror
             </div>
-            {{-- user --}}
-            <div>
-              <label for="user" class="block text-sm font-medium ">Utilisateur</label>
-              <select name="user" id="user" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c11bb] focus:outline-none focus:border-transparent transition duration-300">
-                <option value="">Choisir</option>
-                @foreach ($users as $user )
-                    <option value="{{ $user->id }}">{{ $user->name }}</option>
-                @endforeach
-              </select>
-            @error('user')
-               <p class="text-red-500">{{ $message }}</p>
-             @enderror
-            </div>
+
 
             {{-- description --}}
                <div>

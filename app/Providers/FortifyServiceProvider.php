@@ -11,6 +11,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use Illuminate\Support\Facades\RateLimiter;
+use Laravel\Fortify\Contracts\LoginResponse;
 use Laravel\Fortify\Contracts\LogoutResponse;
 use App\Actions\Fortify\UpdateUserProfileInformation;
 use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
@@ -27,6 +28,18 @@ class FortifyServiceProvider extends ServiceProvider
              public function toResponse($request)
             {
                 return redirect('/login');
+            }
+        });
+
+        // verification de role 
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse{
+            public function toResponse($request){
+                if(auth()->user()->role == "admin"){
+                    return redirect()->route("dashboard");
+                }
+                else {
+                    return redirect()->route("home");
+                }
             }
         });
     }

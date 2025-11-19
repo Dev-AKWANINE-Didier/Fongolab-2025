@@ -92,5 +92,11 @@ Route::middleware("role:admin")->group(function(){
     Route::put("animals/update/{animal}",[AnimalController::class, 'update'])->name("animals-update");
     Route::delete("animals/delete/{animal}",[AnimalController::class, 'destroy'])->name("animals-delete");
     Route::get("animals/show/{animal}",[AnimalController::class, 'show'])->name("animals-show");
+
+
+    // routes qui affiche le formulaire pour password update 
+    Route::get("change-password",function(){
+        return view("auth.updatePassword");
+    })->name("update-password");
     });
 });

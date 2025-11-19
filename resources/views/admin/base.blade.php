@@ -171,6 +171,17 @@
       </li>
 
       <li>
+        <button type="button" class=" hover:bg-blue-600 cursor-pointer flex justify-between items-center w-full focus:outline-none" aria-expanded="false">
+          <span><i class="fa-duotone fa-solid fa-gear menu-icon"></i>Paramètre </span>
+          <i class="bi bi-chevron-down chevron"></i>
+        </button>
+        <ul class="mt-1 ml-4 hidden space-y-1 text-blue-800">
+          <li><a class="inline-flex items-center text-sm text-blue-600  hover:text-blue-800 transition" href="{{ route("update-password") }}" class="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 transition">Password</a></li>
+          {{-- <li><a class="inline-flex items-center text-sm text-blue-600  hover:text-blue-800 transition" href="{{ route('dashboard-user-index') }}" class="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 transition">Users</a></li> --}}
+        </ul>
+      </li>
+
+      <li>
         <form action="{{ route("logout") }}" method="POST">
           @csrf
           <button type="submit" class="cursor-pointer block text-red-600 hover:text-red-800 transition duration-300">

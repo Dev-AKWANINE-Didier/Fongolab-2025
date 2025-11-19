@@ -86,7 +86,7 @@
                   <input type="checkbox" name="" class="mr-2 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
                   Se souvenir de moi
                 </label>
-                <a href="" class="text-sm text-[blue] hover:opacity-[0.9]">Mot de passe oublié ?</a>
+                <a href="/forgot-password" class="text-sm text-[blue] hover:opacity-[0.9]">Mot de passe oublié ?</a>
               </div>
         
               <!-- Submit Button -->
